@@ -21,7 +21,7 @@ dev = ["ipykernel>=7.1.0"]
 earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
 
 [tool.uv]
-no-build-isolation-package = ["torch-harmonics"]
+override-dependencies = ["torch-harmonics==0.8.1"]
 
 [[tool.uv.index]]
 url = "https://pypi.nvidia.com"
