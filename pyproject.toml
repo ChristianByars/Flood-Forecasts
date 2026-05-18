@@ -22,6 +22,7 @@ earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
 
 [tool.uv]
 override-dependencies = ["torch-harmonics==0.8.1"]
+index-strategy = "unsafe-best-match"
 
 [[tool.uv.index]]
 url = "https://pypi.nvidia.com"
