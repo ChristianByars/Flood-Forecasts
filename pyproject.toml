@@ -22,4 +22,7 @@ earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
 
 [tool.uv]
 no-build-isolation-package = ["torch-harmonics"]
-index-url = "https://pypi.nvidia.com"
+
+[[tool.uv.index]]
+url = "https://pypi.nvidia.com"
+priority = "supplemental"
