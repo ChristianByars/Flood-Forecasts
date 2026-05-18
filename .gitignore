@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+ohio_flood_outputs/
+tn_flood_outputs/
+*.zarr
+.DS_Store

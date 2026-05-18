@@ -1,0 +1,25 @@
+[project]
+name = "flood-forecasts"
+version = "0.1.0"
+requires-python = "==3.12.*"
+dependencies = [
+    "earth2studio[data]",
+    "torch>=2.4.0",
+    "torch-harmonics>=0.8.0",
+    "zarr>=2.18.0",
+    "gcsfs>=2024.1.0",
+    "matplotlib>=3.8.1",
+    "cartopy>=0.22.0",
+    "numpy>=1.22.4",
+    "nvidia-ml-py",
+]
+
+[dependency-groups]
+dev = ["ipykernel>=7.1.0"]
+
+[tool.uv.sources]
+earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
+
+[tool.uv]
+extra-build-dependencies = ["setuptools"]
+index-url = "https://pypi.nvidia.com"
