@@ -1,9 +1,12 @@
 [project]
 name = "flood-forecasts"
 version = "0.1.0"
+description = "GraphCast extreme-precipitation forecasts for historical US flood events using NVIDIA Earth2Studio"
+readme = "README.md"
 requires-python = "==3.12.*"
+authors = [{ name = "Christian Byars" }]
 dependencies = [
-    "earth2studio[data]",
+    "earth2studio[data,graphcast]",
     "torch>=2.4.0",
     "torch-harmonics>=0.8.0",
     "zarr>=2.18.0",
@@ -19,10 +22,16 @@ dev = ["ipykernel>=7.1.0"]
 
 [tool.uv.sources]
 earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
+torch = { index = "pytorch-cu124" }
 
 [tool.uv]
 override-dependencies = ["torch-harmonics==0.8.1"]
 index-strategy = "unsafe-best-match"
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
 
 [[tool.uv.index]]
 url = "https://pypi.nvidia.com"

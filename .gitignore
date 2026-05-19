@@ -1,5 +1,10 @@
 .venv/
 __pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.env
 .ipynb_checkpoints/
 ohio_flood_outputs/
 tn_flood_outputs/

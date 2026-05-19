@@ -20,19 +20,11 @@ Each notebook runs a deterministic GraphCast inference, then visualizes daily pr
 ## Setup
 
 ```bash
-uv sync --group dev
+uv sync
 ```
 
 This installs all dependencies (Earth2Studio, PyTorch with CUDA 12.4, cartopy, etc.) and the `ipykernel` dev dependency for running notebooks.
 
 ## Running
 
-Launch Jupyter and open either notebook:
-
-```bash
-uv run jupyter lab
-```
-
-Each notebook writes forecast output to a local Zarr store (`ohio_flood_outputs/` or `tn_flood_outputs/`) and renders precipitation maps inline.
-# Flood-Forecasts
-# Flood-Forecasts
+Open either notebook in JupyterLab and run all cells. Each notebook writes forecast output to a local Zarr store (`ohio_flood_outputs/` or `tn_flood_outputs/`) and renders precipitation maps inline.
