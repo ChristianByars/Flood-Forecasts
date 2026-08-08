@@ -8,24 +8,24 @@ authors = [{ name = "Christian Byars" }]
 dependencies = [
     "earth2studio[data,graphcast]",
     "torch>=2.4.0",
-    "torch-harmonics>=0.8.0",
     "zarr>=2.18.0",
     "gcsfs>=2024.1.0",
     "matplotlib>=3.8.1",
     "cartopy>=0.22.0",
     "numpy>=1.22.4",
     "nvidia-ml-py",
+    "xarray>=2024.10.0,<2025.0",
+    "pandas<3",
 ]
 
 [dependency-groups]
 dev = ["ipykernel>=7.1.0"]
 
 [tool.uv.sources]
-earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
+earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git", tag = "0.17.0" }
 torch = { index = "pytorch-cu124" }
 
 [tool.uv]
-override-dependencies = ["torch-harmonics==0.8.1"]
 index-strategy = "unsafe-best-match"
 
 [[tool.uv.index]]

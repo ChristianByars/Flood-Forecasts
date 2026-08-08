@@ -1,15 +1,16 @@
 # Flood Forecasts
 
-GraphCast extreme-precipitation forecasts for historical US flood events using [NVIDIA Earth2Studio](https://github.com/NVIDIA/earth2studio).
+Extreme-precipitation forecasts for the 2025 Tennessee Valley flood using [NVIDIA Earth2Studio](https://github.com/NVIDIA/earth2studio), comparing GraphCast and AIFS deterministic runs against each other across initial conditions and models.
 
-Each notebook runs a deterministic GraphCast inference, then visualizes daily precipitation totals, point time series, and multi-panel lead-time progressions.
+Each notebook runs deterministic AI weather model inference, then visualizes daily precipitation totals, point time series, and multi-panel lead-time/model comparisons.
 
 ## Case Studies
 
 | Notebook | Event | Init Date | Forecast Window |
 |---|---|---|---|
-| `graphcast_ohio_valley_flood.ipynb` | 2019 Ohio Valley Flood | 2019-02-10 | Feb 10--14 (5 days) |
 | `graphcast_tennessee_valley_flood.ipynb` | 2025 Tennessee Valley Flood | 2025-04-01 | Apr 1--6 (6 days) |
+| `graphcast_tennessee_valley_flood_ic_compare.ipynb` | 2025 Tennessee Valley Flood — IC comparison | 2025-04-01 & 2025-04-02 | Apr 1/2--5, compared over Apr 2--5 |
+| `tennessee_valley_flood_model_comparison.ipynb` | 2025 Tennessee Valley Flood — GraphCast vs. AIFS v1 | 2025-04-01 (ERA5/ARCO, shared IC) | Apr 1--6, compared over Apr 2--5 |
 
 ## Prerequisites
 
@@ -27,4 +28,4 @@ This installs all dependencies (Earth2Studio, PyTorch with CUDA 12.4, cartopy, e
 
 ## Running
 
-Open either notebook in JupyterLab and run all cells. Each notebook writes forecast output to a local Zarr store (`ohio_flood_outputs/` or `tn_flood_outputs/`) and renders precipitation maps inline.
+Open any notebook in JupyterLab and run all cells. Each notebook writes forecast output to a local Zarr store (`tn_flood_outputs/`, `tn_flood_ic_compare_outputs/`, or `tn_model_compare_outputs/` + `aifs_tn_flood_outputs/`) and renders precipitation maps inline.

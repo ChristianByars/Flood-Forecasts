@@ -6,7 +6,10 @@ dist/
 build/
 .env
 .ipynb_checkpoints/
-ohio_flood_outputs/
 tn_flood_outputs/
+tn_flood_ic_compare_outputs/
+aifs_tn_flood_outputs/
+tn_model_compare_outputs/
 *.zarr
+*.log
 .DS_Store
