@@ -8,7 +8,7 @@ In early April 2025, days of repeated heavy rain flooded the Ohio and Tennessee 
 
 Scores compare each forecast with ERA5 daily precipitation over the Tennessee Valley box (33–40.5°N, 95–82°W). ERA5 precipitation is itself model-derived, so these numbers measure agreement with ERA5, not with rain gauges. Bias is forecast minus ERA5 in mm/day; Pattern corr is the spatial correlation of the daily rainfall pattern.
 
-**GraphCast, 1–5 April**
+**GraphCast, 1–5 April** (last row: 1–5 April total, mm)
 
 <!-- graphcast_tennessee_valley_flood_metrics:START -->
 _Filled in after the verified run._
@@ -48,7 +48,7 @@ _Filled in after the verified run._
 
 ## Quick start
 
-Requires Python 3.12, [uv](https://docs.astral.sh/uv/), and an NVIDIA GPU with 46 GB+ of VRAM.
+Requires Python 3.12, [uv](https://docs.astral.sh/uv/), and an NVIDIA GPU with about 48 GB of VRAM (developed and tested on an L40).
 
 ```bash
 git clone https://github.com/ChristianByars/Flood-Forecasts.git
@@ -56,6 +56,8 @@ cd Flood-Forecasts
 uv sync
 uv run python -m ipykernel install --user --name flood-forecasts --display-name "flood-forecasts"
 ```
+
+`uv sync` expects a prebuilt flash-attn wheel in a git-ignored `wheels/` folder at the repo root (see [Prebuilt flash-attn wheel](docs/environment.md#known-issues-and-fixes)).
 
 Open a notebook in JupyterLab and select the **flood-forecasts** kernel, then run all cells. The ERA5 verification cells also need a Copernicus Climate Data Store API key in `~/.cdsapirc` (see [docs/environment.md](docs/environment.md)).
 
