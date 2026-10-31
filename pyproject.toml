@@ -1,32 +1,44 @@
 [project]
 name = "flood-forecasts"
 version = "0.1.0"
-description = "GraphCast extreme-precipitation forecasts for historical US flood events using NVIDIA Earth2Studio"
+description = "GraphCast and AIFS precipitation forecasts for the April 2025 Tennessee Valley flood, verified against ERA5, with NVIDIA Earth2Studio"
 readme = "README.md"
 requires-python = "==3.12.*"
 authors = [{ name = "Christian Byars" }]
 dependencies = [
-    "earth2studio[data,graphcast]",
-    "torch>=2.13.0",
-    "zarr>=2.18.0",
+    "earth2studio[aifs,data,graphcast]==0.20.0",
+    "torch==2.13.0",
+    "cartopy>=0.22.0",
+    "cdsapi>=0.7.0",
     "gcsfs>=2024.1.0",
     "matplotlib>=3.8.1",
-    "cartopy>=0.22.0",
-    "numpy>=1.22.4",
+    "numpy>=1.26",
     "nvidia-ml-py",
-    "xarray>=2024.10.0,<2025.0",
-    "pandas<3",
+    "pandas>=2.0.0",
+    "pytest>=9.0.3",  # cupy.testing import guard: importing cupy without pytest crashes
+    "weathernext",  # not on PyPI: resolved from [tool.uv.sources] (earth2studio[graphcast] needs it; uv ignores a dependency's sources)
+    "xarray>=2024.10.0",
+    "zarr>=2.18.0",
 ]
 
 [dependency-groups]
-dev = ["ipykernel>=7.1.0"]
+dev = ["ipykernel>=7.1.0", "nbconvert>=7.16.0"]
 
 [tool.uv.sources]
-earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git", tag = "0.17.0" }
 torch = { index = "pytorch-cu132" }
+makani = { git = "https://github.com/NVIDIA/makani.git", rev = "b38fcb2799d7dbc146fa60459f3f9823394a8bf1" }  # same pin as earth2studio 0.20.0
+flash-attn = { path = "wheels/flash_attn-2.8.3-cp312-cp312-linux_x86_64.whl" }
+torch-harmonics = { path = "wheels/torch_harmonics-0.8.1-cp312-cp312-linux_x86_64.whl" }
+weathernext = { git = "https://github.com/google-deepmind/weathernext.git", rev = "9c034db1ff412d5db6cbe6bb0c5c9afc5a267719" }  # same pin as earth2studio 0.20.0
 
 [tool.uv]
 index-strategy = "unsafe-best-match"
+override-dependencies = ["torch-harmonics==0.8.1", "flash-attn==2.8.3"]
+no-build-isolation-package = ["torch-harmonics", "flash-attn"]
+
+[tool.uv.extra-build-dependencies]
+flash-attn = ["torch", "packaging", "ninja"]
+torch-harmonics = ["torch"]
 
 [[tool.uv.index]]
 name = "pytorch-cu132"
@@ -36,3 +48,7 @@ explicit = true
 [[tool.uv.index]]
 url = "https://pypi.nvidia.com"
 priority = "supplemental"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
