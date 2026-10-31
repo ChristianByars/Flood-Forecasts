@@ -13,3 +13,9 @@ tn_model_compare_outputs/
 *.zarr
 *.log
 .DS_Store
+
+# Executor scratch, renamed pre-cleanup outputs, and failed-run outputs
+.run/
+*.pre-cleanup/
+*.failed-*/
+wheels/
