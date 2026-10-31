@@ -1,7 +1,8 @@
 """ERA5 daily-precipitation truth for the Tennessee Valley flood notebooks.
 
 ERA5 precipitation is itself a model (reanalysis) product, so scores against it measure agreement with
-ERA5, not with rain gauges.
+ERA5, not with rain gauges. The forecast-side daily total (`compute_daily_total_precip`) lives here too, so
+that both sides of the comparison use the same (D 00Z, D+1 00Z] day and are tested together.
 """
 from __future__ import annotations
 
@@ -24,6 +25,28 @@ def daily_total_from_hourly(hourly: xr.DataArray) -> xr.DataArray:
     """
     shifted = hourly.assign_coords(valid_time=hourly["valid_time"] - np.timedelta64(1, "h"))
     return shifted.resample(valid_time="1D").sum(min_count=24).rename(valid_time="day")
+
+
+def compute_daily_total_precip(store, target_date, init_time, variable="tp06", dt_hours=6):
+    """Precipitation total (mm) for the UTC day `target_date`, i.e. over (D 00Z, D+1 00Z].
+
+    `store[variable]` is a forecast array (time, step, lat, lon) in metres as written by earth2studio's
+    `run.deterministic` (a ZarrBackend, or anything indexed the same way). Each `tp06` step holds the rain of
+    the 6 hours ending at its valid time (step 0 is all zeros), so day D is the sum of the steps valid at
+    D 06Z, 12Z, 18Z and D+1 00Z, the same window as the ERA5 daily totals from `daily_total_from_hourly`.
+    Raises ValueError when the forecast does not cover the whole day.
+    """
+    steps_per_day = 24 // dt_hours
+    tp = store[variable]
+    first_step = int((np.datetime64(target_date) - np.datetime64(init_time)) / np.timedelta64(dt_hours, "h")) + 1
+    last_step = first_step + steps_per_day - 1
+    if first_step < 1 or last_step > tp.shape[1] - 1:
+        raise ValueError(f"{target_date} is not fully covered by the forecast from {init_time}.")
+
+    total = np.zeros_like(tp[0, first_step])
+    for step in range(first_step, last_step + 1):
+        total += tp[0, step] * 1000.0  # metres -> millimetres
+    return np.clip(total, 0, None)
 
 
 def _days_to_request(days) -> list[np.datetime64]:
