@@ -18,4 +18,5 @@ tn_model_compare_outputs/
 .run/
 *.pre-cleanup/
 *.failed-*/
-wheels/
+wheels
+cufile.log
