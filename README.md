@@ -15,7 +15,7 @@ Each notebook runs deterministic AI weather model inference, then visualizes dai
 ## Prerequisites
 
 - Python 3.12
-- NVIDIA GPU with CUDA 12.4
+- NVIDIA GPU with CUDA 13.2
 - [uv](https://docs.astral.sh/uv/) package manager
 
 ## Setup
@@ -24,7 +24,7 @@ Each notebook runs deterministic AI weather model inference, then visualizes dai
 uv sync
 ```
 
-This installs all dependencies (Earth2Studio, PyTorch with CUDA 12.4, cartopy, etc.) and the `ipykernel` dev dependency for running notebooks.
+This installs all dependencies (Earth2Studio, PyTorch with CUDA 13.2, cartopy, etc.) and the `ipykernel` dev dependency for running notebooks.
 
 ## Running
 
