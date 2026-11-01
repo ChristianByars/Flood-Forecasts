@@ -11,19 +11,32 @@ Scores compare each forecast with ERA5 daily precipitation over the Tennessee Va
 **GraphCast, 1–5 April** (last row: 1–5 April total, mm)
 
 <!-- graphcast_tennessee_valley_flood_metrics:START -->
-_Filled in after the verified run._
+| Lead day | Date | Bias | RMSE | MAE | Pattern corr |
+|---|---|---|---|---|---|
+| 1 | 2025-04-01 | 0.14 | 0.46 | 0.21 | 0.70 |
+| 2 | 2025-04-02 | -0.45 | 7.76 | 4.87 | 0.79 |
+| 3 | 2025-04-03 | -0.52 | 14.92 | 9.03 | 0.83 |
+| 4 | 2025-04-04 | 3.66 | 12.97 | 9.01 | 0.75 |
+| 5 | 2025-04-05 | 2.27 | 20.68 | 13.20 | 0.81 |
+| Apr 1-5 total |  | 5.11 | 31.72 | 21.86 | 0.90 |
 <!-- graphcast_tennessee_valley_flood_metrics:END -->
 
 **Initial-condition comparison (mean over Apr 2–5)**
 
 <!-- graphcast_tennessee_valley_flood_ic_compare_metrics:START -->
-_Filled in after the verified run._
+| Initial condition | Bias | RMSE | MAE | Pattern corr |
+|---|---|---|---|---|
+| IC Apr 1 | 1.23 | 14.14 | 9.08 | 0.79 |
+| IC Apr 2 | 1.56 | 13.10 | 8.38 | 0.80 |
 <!-- graphcast_tennessee_valley_flood_ic_compare_metrics:END -->
 
 **GraphCast vs AIFS (mean over Apr 2–5)**
 
 <!-- tennessee_valley_flood_model_comparison_metrics:START -->
-_Filled in after the verified run._
+| Model | Bias | RMSE | MAE | Pattern corr |
+|---|---|---|---|---|
+| AIFS | 0.83 | 13.96 | 9.14 | 0.77 |
+| GraphCast | 1.23 | 13.66 | 8.54 | 0.79 |
 <!-- tennessee_valley_flood_model_comparison_metrics:END -->
 
 ![GraphCast cumulative precipitation for 1–5 April 2025 over the contiguous United States](docs/images/graphcast_cumulative_apr1_5.png)
@@ -64,7 +77,11 @@ Open a notebook in JupyterLab and select the **flood-forecasts** kernel, then ru
 ## Notebooks
 
 <!-- RUNS:START -->
-_Runtime and GPU memory are filled in after the verified run._
+| Notebook | Runtime | Peak GPU memory (GiB) |
+|---|---|---|
+| graphcast_tennessee_valley_flood.ipynb | 8 min | 37.30 |
+| graphcast_tennessee_valley_flood_ic_compare.ipynb | 7 min | 36.80 |
+| tennessee_valley_flood_model_comparison.ipynb | 7 min | 39.50 |
 <!-- RUNS:END -->
 
 | Notebook | Event | Init date (00Z) | Forecast window |
