@@ -13,12 +13,12 @@ Scores compare each forecast with ERA5 daily precipitation over the Tennessee Va
 <!-- graphcast_tennessee_valley_flood_metrics:START -->
 | Lead day | Date | Bias | RMSE | MAE | Pattern corr |
 |---|---|---|---|---|---|
-| 1 | 2025-04-01 | 0.14 | 0.46 | 0.21 | 0.70 |
-| 2 | 2025-04-02 | -0.45 | 7.76 | 4.87 | 0.79 |
-| 3 | 2025-04-03 | -0.52 | 14.92 | 9.03 | 0.83 |
-| 4 | 2025-04-04 | 3.66 | 12.97 | 9.01 | 0.75 |
-| 5 | 2025-04-05 | 2.27 | 20.68 | 13.20 | 0.81 |
-| Apr 1-5 total |  | 5.11 | 31.72 | 21.86 | 0.90 |
+| 1 | 2025-04-01 | 0.14 | 0.46 | 0.21 | 0.71 |
+| 2 | 2025-04-02 | -0.43 | 7.78 | 4.89 | 0.79 |
+| 3 | 2025-04-03 | -0.47 | 14.78 | 8.94 | 0.83 |
+| 4 | 2025-04-04 | 3.74 | 12.96 | 9.02 | 0.75 |
+| 5 | 2025-04-05 | 2.23 | 20.96 | 13.36 | 0.81 |
+| Apr 1-5 total |  | 5.22 | 31.83 | 21.97 | 0.90 |
 <!-- graphcast_tennessee_valley_flood_metrics:END -->
 
 **Initial-condition comparison (mean over Apr 2–5)**
@@ -26,8 +26,8 @@ Scores compare each forecast with ERA5 daily precipitation over the Tennessee Va
 <!-- graphcast_tennessee_valley_flood_ic_compare_metrics:START -->
 | Initial condition | Bias | RMSE | MAE | Pattern corr |
 |---|---|---|---|---|
-| IC Apr 1 | 1.23 | 14.14 | 9.08 | 0.79 |
-| IC Apr 2 | 1.56 | 13.10 | 8.38 | 0.80 |
+| IC Apr 1 | 1.30 | 14.08 | 9.01 | 0.80 |
+| IC Apr 2 | 1.54 | 13.14 | 8.39 | 0.79 |
 <!-- graphcast_tennessee_valley_flood_ic_compare_metrics:END -->
 
 The "IC Apr 1" row and the table above it come from separate runs of the same forecast, so their numbers differ slightly (RMSE by up to about 0.2 mm per day).
@@ -37,8 +37,8 @@ The "IC Apr 1" row and the table above it come from separate runs of the same fo
 <!-- tennessee_valley_flood_model_comparison_metrics:START -->
 | Model | Bias | RMSE | MAE | Pattern corr |
 |---|---|---|---|---|
-| AIFS | 0.83 | 13.96 | 9.14 | 0.77 |
-| GraphCast | 1.23 | 13.66 | 8.54 | 0.79 |
+| AIFS | 0.83 | 13.97 | 9.16 | 0.77 |
+| GraphCast | 1.29 | 13.56 | 8.49 | 0.79 |
 <!-- tennessee_valley_flood_model_comparison_metrics:END -->
 
 ![GraphCast cumulative precipitation for 1–5 April 2025 over the contiguous United States](docs/images/graphcast_cumulative_apr1_5.png)
@@ -77,8 +77,8 @@ Runtimes depend on the Copernicus CDS queue and on what is already cached; downl
 <!-- RUNS:START -->
 | Notebook | Runtime | Peak GPU memory (GiB) |
 |---|---|---|
-| graphcast_tennessee_valley_flood.ipynb | 8 min | 37.3 |
-| graphcast_tennessee_valley_flood_ic_compare.ipynb | 7 min | 36.8 |
+| graphcast_tennessee_valley_flood.ipynb | 6 min | 37.7 |
+| graphcast_tennessee_valley_flood_ic_compare.ipynb | 7 min | 36.6 |
 | tennessee_valley_flood_model_comparison.ipynb | 7 min | 39.5 |
 <!-- RUNS:END -->
 
@@ -97,10 +97,11 @@ tennessee_valley_flood_model_comparison.ipynb      GraphCast vs AIFS v1 from the
 metrics.py                                         area-weighted bias, RMSE, MAE and pattern correlation
 era5_truth.py                                      ERA5 daily precipitation: download, day alignment, box crop
 tests/                                             unit tests for metrics.py and era5_truth.py
+figures/                                           the figures each notebook produces, at full size
 docs/images/                                       figures shown in this README
 docs/results/                                      CSV metric tables written by the notebooks, and runs.csv (runtimes and peak GPU memory from the verified runs)
 docs/environment.md                                pinned versions and install notes
-tn_*_outputs/, aifs_tn_flood_outputs/              forecast Zarr stores and PNGs (git-ignored, made by the notebooks)
+tn_*_outputs/, aifs_tn_flood_outputs/              forecast Zarr stores and cached ERA5 downloads (git-ignored, made by the notebooks)
 ```
 
 ## Environment notes
