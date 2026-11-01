@@ -30,7 +30,9 @@ Scores compare each forecast with ERA5 daily precipitation over the Tennessee Va
 | IC Apr 2 | 1.56 | 13.10 | 8.38 | 0.80 |
 <!-- graphcast_tennessee_valley_flood_ic_compare_metrics:END -->
 
-**GraphCast vs AIFS (mean over Apr 2–5)**
+The "IC Apr 1" row and the table above it come from separate runs of the same forecast, so their numbers differ slightly (RMSE by up to about 0.2 mm per day).
+
+**GraphCast vs AIFS, both from ERA5 on 1 April (mean over Apr 2–5)**
 
 <!-- tennessee_valley_flood_model_comparison_metrics:START -->
 | Model | Bias | RMSE | MAE | Pattern corr |
@@ -42,14 +44,6 @@ Scores compare each forecast with ERA5 daily precipitation over the Tennessee Va
 ![GraphCast cumulative precipitation for 1–5 April 2025 over the contiguous United States](docs/images/graphcast_cumulative_apr1_5.png)
 
 *Cumulative rain: GraphCast's 1–5 April total from the 1 April GFS start.*
-
-![GraphCast daily precipitation for 5 April 2025 from the 1 April and 2 April initial conditions](docs/images/ic_compare_apr5.png)
-
-*Initial-condition sensitivity: GraphCast's 5 April forecast started on 1 April (top) and on 2 April (bottom).*
-
-![Daily precipitation at Nashville from the two GraphCast initial conditions, 2–5 April 2025](docs/images/ic_compare_nashville.png)
-
-*Nashville: daily totals from the two GraphCast runs, 2–5 April.*
 
 ## Models and data
 
@@ -76,6 +70,8 @@ Open a notebook in JupyterLab and select the **flood-forecasts** kernel, then ru
 
 ## Notebooks
 
+Each GraphCast notebook holds about 37 GiB of GPU memory until its kernel is shut down, so close one notebook's kernel before you run the next.
+
 <!-- RUNS:START -->
 | Notebook | Runtime | Peak GPU memory (GiB) |
 |---|---|---|
@@ -100,7 +96,7 @@ metrics.py                                         area-weighted bias, RMSE, MAE
 era5_truth.py                                      ERA5 daily precipitation: download, day alignment, box crop
 tests/                                             unit tests for metrics.py and era5_truth.py
 docs/images/                                       figures shown in this README
-docs/results/                                      CSV metric tables written by the notebooks
+docs/results/                                      CSV metric tables written by the notebooks, and runs.csv (runtimes and peak GPU memory from the verified runs)
 docs/environment.md                                pinned versions and install notes
 tn_*_outputs/, aifs_tn_flood_outputs/              forecast Zarr stores and PNGs (git-ignored, made by the notebooks)
 ```
