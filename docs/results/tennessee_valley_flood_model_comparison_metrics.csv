@@ -1,0 +1,3 @@
+Model,Bias,RMSE,MAE,Pattern corr
+AIFS,0.828,13.957,9.144,0.769
+GraphCast,1.229,13.66,8.538,0.785
