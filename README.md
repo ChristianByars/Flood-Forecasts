@@ -77,9 +77,9 @@ Runtimes depend on the Copernicus CDS queue and on what is already cached; downl
 <!-- RUNS:START -->
 | Notebook | Runtime | Peak GPU memory (GiB) |
 |---|---|---|
-| graphcast_tennessee_valley_flood.ipynb | 8 min | 37.30 |
-| graphcast_tennessee_valley_flood_ic_compare.ipynb | 7 min | 36.80 |
-| tennessee_valley_flood_model_comparison.ipynb | 7 min | 39.50 |
+| graphcast_tennessee_valley_flood.ipynb | 8 min | 37.3 |
+| graphcast_tennessee_valley_flood_ic_compare.ipynb | 7 min | 36.8 |
+| tennessee_valley_flood_model_comparison.ipynb | 7 min | 39.5 |
 <!-- RUNS:END -->
 
 | Notebook | Event | Init date (00Z) | Forecast window |
