@@ -55,7 +55,7 @@ The "IC Apr 1" row and the table above it come from separate runs of the same fo
 
 ## Quick start
 
-Requires Python 3.12, [uv](https://docs.astral.sh/uv/), and an NVIDIA GPU with about 48 GB of VRAM (developed and tested on an L40).
+Requires Python 3.12, [uv](https://docs.astral.sh/uv/), and an NVIDIA GPU (developed and tested on an L40 with 48 GB; the table under *Notebooks* lists each notebook's peak GPU memory).
 
 ```bash
 git clone https://github.com/ChristianByars/Flood-Forecasts.git
@@ -71,6 +71,8 @@ Open a notebook in JupyterLab and select the **flood-forecasts** kernel, then ru
 ## Notebooks
 
 Each GraphCast notebook holds about 37 GiB of GPU memory until its kernel is shut down, so close one notebook's kernel before you run the next.
+
+Runtimes depend on the Copernicus CDS queue and on what is already cached; downloads dominate a first run.
 
 <!-- RUNS:START -->
 | Notebook | Runtime | Peak GPU memory (GiB) |
